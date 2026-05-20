@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Structure | Creator Architect Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&amp;family=Inter:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* LUXURY STYLING CORE RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #050505;
+            color: #E5E5E5;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* FIXED FLOATING NAVIGATION DRAWER WITH EXPLICIT MENUS */
+        .site-navigation-drawer {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background-color: #050505;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .site-brand-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FFF;
+        }
+        .nav-links-wrapper {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+        .nav-item-link {
+            color: #999;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        .nav-item-link:hover {
+            color: #C5A880;
+        }
+
+        /* MOBILE HAMBURGER BUTTON */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        .mobile-menu-toggle span {
+            width: 100%;
+            height: 1px;
+            background-color: #FFF;
+            transition: all 0.3s ease;
+        }
+
+        /* Animated state when menu is open */
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* HEADING HERO AREA */
+        .investment-hero {
+            padding: 120px 8% 60px 8%; /* Balanced padding for top navbar integration */
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        .investment-tag {
+            color: #C5A880;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            display: block;
+        }
+        .investment-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 300;
+            line-height: 1.1;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            max-width: 900px;
+        }
+
+        /* EXTRA LARGE DIVIDER LINE */
+        .investment-divider {
+            width: 84%;
+            margin: 0 auto 80px 8%;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.02) 100%);
+        }
+
+        /* MAIN INVESTMENT BLOCK CONTAINER */
+        .investment-body-canvas {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 8%;
+        }
+
+        /* VALUE METRICS PRE-ROW */
+        .value-metrics-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+        .metric-card {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+        }
+        .metric-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #C5A880;
+            margin-bottom: 10px;
+        }
+        .metric-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .metric-desc {
+            font-size: 13.5px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* BESPOKE TIER CARD BLOCK */
+        .tier-architecture-card {
+            background-color: #0B0B0B;
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 60px;
+            border-radius: 4px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+            margin-bottom: 40px;
+        }
+        .tier-meta h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: #FFF;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .tier-meta p {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        .tier-price-box {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: #C5A880;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* INCLUSIONS LIST SYSTEM */
+        .tier-inclusions {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .tier-inclusions li {
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .inclusion-dot {
+            color: #C5A880;
+            font-size: 14px;
+        }
+        .inclusion-text strong {
+            display: block;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #FFF;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        .inclusion-text p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        /* CTA ACTION BASE PORTAL */
+        .investment-footer-cta {
+            text-align: center;
+            padding: 40px 0 80px 0;
+        }
+        .cta-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+        }
+        .secure-tier-btn {
+            display: inline-block;
+            border: 1px solid #C5A880;
+            color: #C5A880;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 3px;
+            padding: 18px 50px;
+            font-weight: 400;
+            transition: all 0.3s;
+            background: transparent;
+            border-radius: 2px;
+        }
+        .secure-tier-btn:hover {
+            background-color: #C5A880;
+            color: #050505;
+            box-shadow: 0 15px 30px rgba(197, 168, 128, 0.2);
+        }
+
+        /* ======================================================= */
+        /* HIGH-END RESPONSIVE SYSTEM OVERRIDES (GAP REMOVAL)      */
+        /* ======================================================= */
+        @media (max-width: 900px) {
+            .site-navigation-drawer { 
+                padding: 20px 6%; 
+            }
+            
+            /* Show the mobile hamburger trigger button */
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            /* Convert horizontal links into an interactive mobile drawer panel */
+            .nav-links-wrapper {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Hidden by default off canvas edge */
+                width: 75%;
+                height: 100vh;
+                background-color: #0A0A0A;
+                border-left: 1px solid rgba(255, 255, 255, 0.05);
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                padding: 40px;
+                transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                z-index: 1050;
+            }
+
+            /* Slid-in state when menu trigger is engaged */
+            .nav-links-wrapper.open {
+                right: 0;
+            }
+
+            .nav-item-link {
+                font-size: 16px;
+                letter-spacing: 3px;
+                width: 100%;
+                text-align: left;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            }
+
+            .investment-hero { padding: 100px 6% 40px 6%; }
+            .investment-title { font-size: 36px; }
+            .investment-divider { width: 88%; margin-bottom: 40px; margin-left: 6%; }
+            
+            .investment-body-canvas { padding: 0 6%; }
+            .value-metrics-row { grid-template-columns: 1fr; gap: 30px; margin-bottom: 60px; }
+            
+            .tier-architecture-card { 
+                grid-template-columns: 1fr !important; 
+                gap: 30px !important; 
+                padding: 30px 20px !important; 
+                margin-bottom: 30px !important;
+            }
+            .tier-meta h3 { font-size: 28px; }
+            .tier-meta p { margin-bottom: 15px !important; }
+            .tier-inclusions { gap: 15px !important; }
+            .tier-inclusions li { padding-bottom: 10px !important; }
+            
+            .investment-footer-cta {
+                padding-top: 20px !important;
+            }
+            .mobile-cta-fix {
+                font-size: 22px !important;
+                line-height: 1.4 !important;
+                margin-bottom: 25px !important;
+                padding: 0 10px !important;
+            }
+            .secure-tier-btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. NAVIGATION DRAWER WITH MOBILE INTERACTIVE OVERLAY PANEL -->
+    <nav class="site-navigation-drawer">
+        <div class="site-brand-logo">CREATOR PORTFOLIO</div>
+        
+        <!-- Mobile Trigger Button (3 Lines) -->
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menu Drawer Content Container -->
+        <div class="nav-links-wrapper" id="navLinks">
+            <a href="index.html" class="nav-item-link" onclick="closeMenu()">Home</a>
+            <a href="Portfolio.html" class="nav-item-link" onclick="closeMenu()">Portfolio</a>
+            <a href="Investment.html" class="nav-item-link" onclick="closeMenu()">Investment</a>
+            <a href="contact.html" class="nav-item-link" onclick="closeMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- 2. HEADING HERO AREA -->
+    <header class="investment-hero">
+        <span class="investment-tag">Value Allocation Framework</span>
+        <h1 class="investment-title">Bespoke Systems Built For Commercial Scalability.</h1>
+    </header>
+
+    <hr class="investment-divider">
+
+    <!-- 3. MAIN WORKFLOW CANVAS -->
+    <main class="investment-body-canvas">
+
+        <div class="value-metrics-row">
+            <div class="metric-card">
+                <div class="metric-num">0%</div>
+                <div class="metric-label">Compression Retention</div>
+                <p class="metric-desc">Bypasses typical algorithmic layout limitations, loading raw uncompressed color tones across all high-definition displays.</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-num">less than 1.2s</div>
+                <div class="metric-label">Execution Architecture</div>
+                <p class="metric-desc">Custom asynchronous load sequencing engineered to process massive creative image catalogs instantly.</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-num">100%</div>
+                <div class="metric-label">Frictionless Flow</div>
+                <p class="metric-desc">Eliminates back-and-forth communication friction, funneling luxury agencies straight into structured validation slots.</p>
+            </div>
+        </div>
+
+        <section class="tier-architecture-card" id="archives">
+            
+            <div class="tier-meta">
+                <h3>Bespoke System Architecture</h3>
+                <p>A complete, handcrafted digital flagship ecosystem tailored exclusively for elite, commercial visual production studios and luxury fine-art creators looking to command top-tier agency fees.</p>
+                
+                <div class="tier-price-box">
+                    <span>Allocation Capital</span>
+                    <span>Custom Quote</span>
+                </div>
+            </div>
+
+            <ul class="tier-inclusions">
+                <li>
+                    <span class="inclusion-dot">▪</span>
+                    <div class="inclusion-text">
+                        <strong>Retina Display Fine Tuning</strong>
+                        <p>Advanced asset optimization layer built to honor delicate shadow gradings and crisp digital exposure metrics natively.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="inclusion-dot">▪</span>
+                    <div class="inclusion-text">
+                        <strong>Zero-Friction Booking Funnels</strong>
+                        <p>Interactive automated tracking pipeline constructed to seamlessly onboard high-value commercial accounts directly into your system.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="inclusion-dot">▪</span>
+                    <div class="inclusion-text">
+                        <strong>Bespoke Interface Engineering</strong>
+                        <p>Total layout architectural freedom, completely unique to your specific identity. Built with clean code parameters and no repetitive template styles.</p>
+                    </div>
+                </li>
+            </ul>
+
+        </section>
+
+        <footer class="investment-footer-cta">
+            <h2 class="cta-heading mobile-cta-fix">Initiate System Capital Allocation</h2>
+            <a href="/contact/" class="secure-tier-btn">Request Project Alignment →</a>
+        </footer>
+
+    </main>
+
+    <!-- LIGHTWEIGHT INTERACTIVE NAV ACTION LOGIC -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        // Toggle opened/closed navigation classes on hamburger icon clicks
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        // Auto-close overlay drawer panel when a relative click target link executes
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+        }
+    </script>
+
+    <!-- CLEANUP Theme Overrides -->
+    <style>
+        /* Completely hides the native Astra theme copyright footer bar */
+        footer.site-footer, 
+        .ast-small-footer,
+        #colophon {
+            display: none !important;
+        }
+    </style>
+</body>
+</html>

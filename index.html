@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Architect | Premium Web Design For Photographers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* GLOBAL LUXURY STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #111111;
+            color: #EAEAEA;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 80px; /* Prevents hero content from slipping under the fixed header */
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* PREMIUM NAVIGATION HEADER */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            z-index: 9999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: #EAEAEA;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 400;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #999999;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #C5A880;
+        }
+        
+        /* Mobile Menu Toggle Button (Hamburger) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 22px;
+            height: 16px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 10000;
+        }
+        .menu-toggle .bar {
+            width: 100%;
+            height: 1px;
+            background-color: #EAEAEA;
+            transition: all 0.3s ease;
+        }
+
+        /* SECTION 1: HERO SECTION */
+        .hero-section {
+            padding: 80px 20px 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1A1A1A 0%, #111111 100%);
+        }
+        .hero-subtitle {
+            color: #C5A880;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .hero-image-container {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            color: #EAEAEA;
+            max-width: 850px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .hero-btn {
+            display: inline-block;
+            background-color: #C5A880;
+            color: #111111;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            padding: 16px 36px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        .hero-btn:hover {
+            background-color: #b3966e;
+            transform: translateY(-2px);
+        }
+
+        /* SECTION 1.5: THE PHOTOGRAPHER PROBLEM HOOK */
+        .problem-section {
+            padding: 100px 20px;
+            background-color: #161616;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .problem-subtitle {
+            color: #C5A880;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .problem-lead-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            max-width: 850px;
+            line-height: 1.4;
+            color: #F5F5F5;
+            margin-bottom: 50px;
+        }
+        .problem-grid {
+            display: flex;
+            gap: 30px;
+            max-width: 1100px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .problem-box {
+            flex: 1;
+            background-color: #111111;
+            padding: 30px;
+            border-radius: 6px;
+            text-align: left;
+            border-left: 3px solid #C5A880;
+        }
+        .problem-box h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            color: #EAEAEA;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .problem-box p {
+            font-size: 14px;
+            color: #999999;
+            line-height: 1.6;
+        }
+
+        /* SECTION 2: PORTFOLIO SHOWCASE */
+        .portfolio-section {
+            padding: 100px 20px;
+            background-color: #0D0D0D;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #EAEAEA;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .section-desc {
+            color: #888888;
+            font-size: 15px;
+            margin-bottom: 60px;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .portfolio-grid {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .portfolio-item {
+            background-color: #111111;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .portfolio-img-box {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background-color: #222;
+            overflow: hidden;
+        }
+        .portfolio-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .portfolio-item:hover .portfolio-img-box img {
+            transform: scale(1.03);
+        }
+        .portfolio-meta {
+            padding: 24px;
+        }
+        .portfolio-meta h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: #EAEAEA;
+            margin-bottom: 8px;
+        }
+        .portfolio-meta p {
+            font-size: 13px;
+            color: #C5A880;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* SECTION 3: INVESTMENT ROW */
+        .investment-section {
+            padding: 120px 20px;
+            background-color: #111111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .pricing-row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 24px;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .pricing-card {
+            background-color: #1A1A1A;
+            border-radius: 8px;
+            padding: 35px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+        .card-top {
+            width: 100%;
+        }
+        .pricing-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: #EAEAEA;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .pricing-card p {
+            font-size: 14px;
+            color: #B3B3B3;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .pricing-card button {
+            background-color: #C5A880;
+            color: #111111;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 14px 0;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: auto;
+        }
+        .pricing-card button:hover {
+            background-color: #b3966e;
+        }
+
+        /* SECTION 4: FOOTER */
+        .main-footer {
+            padding: 60px 20px 40px 20px;
+            background-color: #0D0D0D;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            letter-spacing: 1.5px;
+            color: #EAEAEA;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .footer-copyright {
+            font-size: 13px;
+            color: #7A7A7A;
+        }
+
+        /* ======================================================= */
+        /* FIXED MOBILE STYLING WITH BALANCED FONT ENGINE          */
+        /* ======================================================= */
+        @media (max-width: 767px) {
+            body {
+                padding-top: 70px; /* Slimmer header padding on mobile */
+            }
+            
+            /* Responsive Mobile Navigation */
+            .menu-toggle {
+                display: flex; /* Show the 3 lines toggle button */
+            }
+            .nav-menu {
+                position: fixed;
+                top: 69px; /* Anchored right under header border */
+                left: 0;
+                width: 100%;
+                background-color: rgba(17, 17, 17, 0.98);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                flex-direction: column;
+                gap: 0;
+                padding: 10px 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            /* Class toggled by JavaScript to slide menu down */
+            .nav-menu.open {
+                max-height: 250px; 
+            }
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            .nav-link {
+                display: block;
+                padding: 18px 0;
+                font-size: 12px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.01);
+            }
+            
+            /* Animated Hamburger into an 'X' when open */
+            .menu-toggle.open .bar:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .menu-toggle.open .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.open .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero-section {
+                padding: 40px 15px 30px 15px;
+            }
+            .hero-subtitle {
+                font-size: 10px !important;
+                letter-spacing: 2px !important;
+                margin-bottom: 10px !important;
+            }
+            .hero-title {
+                font-size: 20px !important; 
+                letter-spacing: 1px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 20px !important;
+                padding: 0 5px;
+            }
+            .hero-btn {
+                padding: 12px 24px;
+                font-size: 11px;
+            }
+            .hero-image-container {
+                margin-bottom: 25px;
+            }
+
+            .problem-section {
+                padding: 60px 15px;
+            }
+            .problem-lead-text {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+            .problem-grid {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .problem-box {
+                padding: 16px;
+            }
+            .problem-box h4 {
+                font-size: 16px;
+            }
+            .problem-box p {
+                font-size: 12px;
+            }
+
+            .portfolio-section {
+                padding: 60px 15px;
+            }
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            .section-desc {
+                font-size: 12px;
+                margin-bottom: 35px;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .portfolio-meta {
+                padding: 16px;
+            }
+            .portfolio-meta h4 {
+                font-size: 18px;
+            }
+
+            .investment-section {
+                padding: 60px 10px;
+            }
+            
+            /* CRITICAL MOBILE 3-CARD SIDE-BY-SIDE LOCKED ARRAY */
+            .pricing-row {
+                display: flex !important;
+                flex-direction: row !important; 
+                flex-wrap: nowrap !important;
+                gap: 6px !important;
+                padding: 0 4px !important;
+                width: 100% !important;
+            }
+            .pricing-card {
+                padding: 12px 6px !important;
+                border-radius: 4px !important;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+                flex: 1 !important;
+            }
+            .pricing-card h3 {
+                font-size: 9px !important;
+                margin-bottom: 8px !important;
+                letter-spacing: 0px !important;
+            }
+            .pricing-card p {
+                font-size: 8px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 12px !important;
+            }
+            .pricing-card button {
+                font-size: 8px !important;
+                padding: 8px 2px !important;
+                width: 95% !important;
+            }
+            
+            .main-footer {
+                padding: 40px 15px 30px 15px;
+            }
+            .footer-brand {
+                font-size: 16px;
+            }
+            .footer-copyright {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- GLOBAL PREMIUM HEADER SECTION -->
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">Creator Architect</a>
+            
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu-list">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="Portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="Investment.html" class="nav-link">Investment</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-subtitle">Digital Space Engineering</div>
+        <h1 class="hero-title">We Build High-End Digital Environments For Premium Photographers</h1>
+        <div class="hero-image-container">
+          <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&amp;fit=crop&amp;w=1200&amp;h=500&amp;q=60" alt="Premium Workstation Asset">
+        </div>
+        <a href="contact.html" class="hero-btn">Secure A Design Consultation</a>
+    </section>
+
+    <section class="problem-section">
+        <div class="problem-subtitle">The Invisible Leak</div>
+        <h2 class="problem-lead-text">Why elite commercial and portrait photographers are consistently losing high-budget corporate clients.</h2>
+        
+        <div class="problem-grid">
+            <div class="problem-box">
+                <h4>Compressed Details</h4>
+                <p>Standard website builders and social grids heavily compress image files. It squashes the dynamic range and sharpness of premium camera sensors, making a luxury shoot look completely flat to a commercial brand director.</p>
+            </div>
+            <div class="problem-box">
+                <h4>Booking Friction</h4>
+                <p>High-ticket corporate clients operate on strict schedules. If your website forces them to go back-and-forth over old email chains just to check availability or secure a session date, they leave for an automated competitor.</p>
+            </div>
+            <div class="problem-box">
+                <h4>Generic Templates</h4>
+                <p>An agency director ready to spend $10,000 on a commercial project will never trust a photographer whose online home looks like a cookie-cutter layout. A generic digital space immediately destroys your pricing authority.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section">
+        <h2 class="section-title">Digital Architecture</h2>
+        <p class="section-desc">A showcase of bespoke, ultra-fast website frameworks engineered to preserve image resolution and maximize booking speed for premium photographers.</p>
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-item">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="High Fashion Editorial Web System Blueprint">
+                </div>
+                <div class="portfolio-meta">
+                    <h4>CHRONOS: AUTOMOTIVE PORTFOLIO SYSTEM</h4>
+                    <p>CASE STUDY | HIGH-CONTRAST COMMERCIAL UI FRAMEWORK</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="High Fashion Editorial Web System Blueprint">
+                </div>
+                <div class="portfolio-meta">
+                    <h4>NOIR: STUDIO & EDITORIAL ENVIRONMENT</h4>
+                    <p>CASE STUDY | RES-PROTECTED LUXURY LAYOUT DESIGN</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="investment-section">
+        <h2 class="section-title">Bespoke Design Tiers</h2>
+        <div class="pricing-row">
+            
+            <div class="pricing-card">
+                <div class="card-top">
+                    <h3>THE DEBUT FRAMEWORK</h3>
+                    <p>A minimalist, lightning-fast digital portfolio layout completely engineered to secure raw image sharpness. Custom-built for independent photographers looking to establish digital authority instantly.</p>
+                </div>
+                <a href="contact.html" style="text-decoration: none; display: block; width: 85%; margin-top: auto;">
+                    <button>Enquire For Design</button>
+                </a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="card-top">
+                    <h3>THE DIRECTOR'S ENGINE</h3>
+                    <p>Our most requested framework. It merges full-screen uncompressed visual galleries with an automated, zero-friction client booking system to lock in commercial consulting slots completely on autopilot.</p>
+                </div>
+                <a href="contact.html" style="text-decoration: none; display: block; width: 85%; margin-top: auto;">
+                    <button>Apply For Setup</button>
+                </a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="card-top">
+                    <h3>THE STUDIO ECOSYSTEM</h3>
+                    <p>A comprehensive custom web home built for premium production agencies. Features multiple dedicated client project tracks and a secure, uncompressed proofing portal to deliver raw files cleanly.</p>
+                </div>
+                <a href="contact.html" style="text-decoration: none; display: block; width: 85%; margin-top: auto;">
+                    <button>Request System Consultation</button>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-brand">Creator Architect</div>
+        <div class="footer-copyright">© 2026 Creator Architect. All rights reserved.</div>
+    </footer>
+
+    <!-- INTERACTIVE NAVIGATION MENU LOGIC -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenuList = document.getElementById('nav-menu-list');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            // Toggles navigation menu dropdown open/close state
+            mobileMenuBtn.classList.toggle('open');
+            navMenuList.classList.toggle('open');
+        });
+
+        // Auto-closes mobile menu frame if a user clicks background or item link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('open');
+                navMenuList.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+<style>
+    /* Completely hides the native Astra theme copyright footer bar */
+    footer.site-footer, 
+    .ast-small-footer,
+    #colophon {
+        display: none !important;
+    }
+</style>
+</html>

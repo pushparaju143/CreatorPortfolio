@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exhibition Portfolio | Luxury Visual Artist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&amp;family=Inter:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* LUXURY RESET ENGINE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #050505;
+            color: #E5E5E5;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* FIXED FLOATING NAVIGATION DRAWER WITH EXPLICIT MENUS */
+        .site-navigation-drawer {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background-color: #050505;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .site-brand-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FFF;
+        }
+        .nav-links-wrapper {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+        .nav-item-link {
+            color: #999;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        .nav-item-link:hover {
+            color: #C5A880;
+        }
+
+        /* MOBILE HAMBURGER BUTTON */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        .mobile-menu-toggle span {
+            width: 100%;
+            height: 1px;
+            background-color: #FFF;
+            transition: all 0.3s ease;
+        }
+
+        /* Animated state when menu is open */
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* THE BIG HEADING INTRO SCREEN */
+        .intro-statement-zone {
+            padding: 100px 8% 20px 8%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        .statement-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 76px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+
+        /* THE BIG SEPARATION LINE */
+        .master-divider-line {
+            width: 84%;
+            margin: 20px auto 80px 8%;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.02) 100%);
+        }
+
+        /* WEBSITE SECTION A: STUDIO PHILOSOPHY / ABOUT */
+        .site-about-section {
+            max-width: 1400px;
+            margin: 0 auto 120px auto;
+            padding: 0 8%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: flex-start;
+        }
+        .about-heading-tag {
+            color: #C5A880;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .about-main-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 38px;
+            font-weight: 300;
+            line-height: 1.3;
+            text-transform: uppercase;
+            color: #FFF;
+        }
+        .about-details-paragraph {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.8;
+            padding-top: 30px;
+        }
+
+        /* WEBSITE SECTION B: ASYMMETRIC PHOTOGRAPHY EXHIBITS */
+        .site-gallery-section {
+            max-width: 1400px;
+            margin: 0 auto 100px auto;
+            padding: 0 8%;
+        }
+        
+        /* SHOWCASE BUTTON CONTAINER AND PREMIUM ORIGINAL STYLING */
+        .gallery-showcase-btn-wrapper {
+            margin-bottom: 30px;
+        }
+        
+        /* Restored to original luxury thin-border layout button styling */
+        .see-work-btn, .showcase-btn {
+            display: inline-block;
+            border: 1px solid #C5A880;
+            color: #C5A880;
+            background: transparent;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 3px;
+            padding: 16px 45px;
+            transition: all 0.3s ease;
+            cursor: default; /* Tells user it is a clean visual item */
+            user-select: none;
+        }
+        
+        /* Subtle hover lighting to stay premium without jumping pages */
+        .see-work-btn:hover, .showcase-btn:hover {
+            background-color: #C5A880;
+            color: #050505;
+            box-shadow: 0 15px 30px rgba(197, 168, 128, 0.2);
+        }
+
+        .section-title-block {
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 15px;
+        }
+        .section-title-block h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .exhibit-container {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+        .exhibit-row {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .exhibit-row.reverse {
+            grid-template-columns: 0.8fr 1.2fr;
+        }
+        .exhibit-media {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+        }
+        .exhibit-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 1s;
+        }
+        .exhibit-media:hover img {
+            transform: scale(1.02);
+        }
+
+        /* 3-BOX TECHNICAL DETAIL PANEL UNDER EACH PROJECT */
+        .exhibit-info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .exhibit-title-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        .three-box-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .info-card-box {
+            background-color: #0B0B0B;
+            border: 1px solid rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .card-tag {
+            font-size: 10px;
+            color: #C5A880;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            display: block;
+            font-weight: 600;
+        }
+        .card-desc {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        /* INLINE COMPONENT SLOTS LINK */
+        .inline-slot-link {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #C5A880;
+            text-decoration: none;
+            margin-top: 5px;
+            display: inline-block;
+            font-weight: 500;
+        }
+        .inline-slot-link:hover {
+            text-decoration: underline;
+        }
+
+        /* WEBSITE SECTION C: EXPERTISE / SERVICES OFFERED */
+        .site-services-section {
+            background-color: #0A0A0A;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            padding: 100px 8%;
+            max-width: 1400px;
+            margin: 40px auto 100px auto;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .service-pillar {
+            padding: 30px;
+            border-left: 1px solid #C5A880;
+            background-color: #0D0D0D;
+        }
+        .service-pillar h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            color: #FFF;
+        }
+        .service-pillar p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* WEBSITE SECTION D: CALL TO ACTION FOOTER BANNER */
+        .site-footer-cta {
+            text-align: center;
+            padding: 100px 8%;
+            background-color: #050505;
+        }
+        .footer-cta-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* ======================================================= */
+        /* RESPONSIVE MOBILE DISPLAY ENGINE                        */
+        /* ======================================================= */
+        @media (max-width: 900px) {
+            .site-navigation-drawer { 
+                padding: 20px 6%; 
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            .nav-links-wrapper {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background-color: #0A0A0A;
+                border-left: 1px solid rgba(255, 255, 255, 0.05);
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                padding: 40px;
+                transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                z-index: 1050;
+            }
+            .nav-links-wrapper.open {
+                right: 0;
+            }
+            .nav-item-link {
+                font-size: 16px;
+                letter-spacing: 3px;
+                width: 100%;
+                text-align: left;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            }
+
+            .intro-statement-zone { padding: 60px 6% 20px 6%; }
+            .statement-title { font-size: 44px; }
+            .master-divider-line { margin-bottom: 40px; }
+            
+            .site-about-section { grid-template-columns: 1fr; gap: 20px; padding: 0 6%; margin-bottom: 80px; }
+            .about-main-text { font-size: 28px; }
+            .about-details-paragraph { padding-top: 0; }
+            
+            .site-gallery-section { padding: 0 6%; }
+            .exhibit-row, .exhibit-row.reverse { grid-template-columns: 1fr; gap: 30px; }
+            
+            .site-services-section { padding: 60px 6%; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            
+            .footer-cta-title { font-size: 28px; }
+            .see-work-btn, .showcase-btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. FIXED FLOATING NAVIGATION DRAWER -->
+    <nav class="site-navigation-drawer">
+        <div class="site-brand-logo">CREATOR PORTFOLIO</div>
+        
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links-wrapper" id="navLinks">
+            <a href="index.html" class="nav-item-link" onclick="closeMenu()">Home</a>
+            <a href="portfolio.html" class="nav-item-link" onclick="closeMenu()">Portfolio</a>
+            <a href="investment.html" class="nav-item-link" onclick="closeMenu()">Investment</a>
+            <a href="contact.html" class="nav-item-link" onclick="closeMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- 2. MAIN PORTFOLIO LAYOUT CANVAS -->
+    <header class="intro-statement-zone">
+        <h1 class="statement-title">The Visual Evidence</h1>
+    </header>
+
+    <hr class="master-divider-line">
+
+    <div class="inner-website-canvas">
+
+        <section class="site-about-section" id="philosophy">
+            <div>
+                <span class="about-heading-tag">The Artistic Framework</span>
+                <h2 class="about-main-text">Preserving RAW Light and Compression-Free Geometry.</h2>
+            </div>
+            <div>
+                <p class="about-details-paragraph">Every layout system featured below represents a live custom project engineered for world-class visual creators. We construct lightning-fast digital environments that bypass heavy social media optimization grids, allowing multi-million dollar camera resolutions to load with total purity.</p>
+            </div>
+        </section>
+
+        <section class="site-gallery-section" id="archives">
+            
+            <!-- SHOWCASE "BOOK A SESSION" BUTTON WITH RESTORED THEME STYLE -->
+            <div class="gallery-showcase-btn-wrapper">
+                <button class="showcase-btn" onclick="return false;">Book a Session</button>
+            </div>
+
+            <div class="section-title-block">
+                <h2>Selected Portfolio Deployments</h2>
+            </div>
+
+            <div class="exhibit-container">
+                
+                <article class="exhibit-row">
+                    <div class="exhibit-media">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&amp;fit=crop&amp;w=1200&amp;q=90" alt="Vogue Styled High Fashion Print Capture">
+                    </div>
+                    <div class="exhibit-info-panel">
+                        <h3 class="exhibit-title-line">HAUTE EDITORIAL</h3>
+                        <div class="three-box-grid">
+                            <div class="info-card-box">
+                                <span class="card-tag">01 / Creative Core</span>
+                                <p class="card-desc">An asymmetric, high-contrast fashion editorial structured around clean spatial design fields.</p>
+                            </div>
+                            <div class="info-card-box">
+                                <span class="card-tag">02 / Lens Properties</span>
+                                <p class="card-desc">Calibrated to hold sharp highlight rendering profiles and smooth out deep shadow tone curves completely.</p>
+                            </div>
+                            <div class="info-card-box">
+                                <span class="card-tag">03 / Messaging Focus</span>
+                                <p class="card-desc">Signals massive authority to global fashion houses and commercial advertising agency directors instantly.</p>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="inline-slot-link">Request Frame Allocation →</a>
+                    </div>
+                </article>
+
+                <article class="exhibit-row reverse">
+                    <div class="exhibit-info-panel">
+                        <h3 class="exhibit-title-line">ANAMORPHIC TRACKS</h3>
+                        <div class="three-box-grid">
+                            <div class="info-card-box">
+                                <span class="card-tag">01 / Creative Core</span>
+                                <p class="card-desc">A wide-aspect cinematic grid built to honor raw theatrical ratios and expansive widescreen focus layers.</p>
+                            </div>
+                            <div class="info-card-box">
+                                <span class="card-tag">02 / Lens Properties</span>
+                                <p class="card-desc">Designed to preserve color-grading data layers built inside high-end cinema camera workflows natively.</p>
+                            </div>
+                            <div class="info-card-box">
+                                <span class="card-tag">03 / Messaging Focus</span>
+                                <p class="card-desc">Proves technical mastery of heavy media file rendering, establishing complete brand value to premium production teams.</p>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="inline-slot-link">Request Frame Allocation →</a>
+                    </div>
+                    <div class="exhibit-media">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&amp;fit=crop&amp;w=1200&amp;q=90" alt="Cinematic Studio Narrative Production Stills">
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="site-services-section" id="curations">
+            <span class="about-heading-tag">Architectural Standards</span>
+            <h3 class="about-main-text" style="font-size: 32px;">Engineered Capabilities</h3>
+            
+            <div class="services-grid">
+                <div class="service-pillar">
+                    <h4>Retina Display Optimization</h4>
+                    <p>Bypasses web compression layers to preserve exact pixel configurations and dynamic ranges across luxury display monitors.</p>
+                </div>
+                <div class="service-pillar">
+                    <h4>Zero-Latency Load Sequencing</h4>
+                    <p>Employs customized lazy-loading structures, forcing massive high-resolution imagery files to load instantly on user browsers.</p>
+                </div>
+                <div class="service-pillar">
+                    <h4>High-Ticket Booking Funnels</h4>
+                    <p>Integrates fluid, friction-free scheduling pathways to capture premium commercial studio accounts seamlessly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DISABLED SHOWCASE BUTTON WITH RESTORED ORIGINAL THEME STYLE -->
+        <footer class="site-footer-cta">
+            <h2 class="footer-cta-title">Initiate Your Bespoke System Setup</h2>
+            <button class="see-work-btn" onclick="return false;">Book an Alignment Slot</button>
+        </footer>
+
+    </div>
+
+    <!-- INTERACTIVE NAVIGATION DRAWERS SCRIPTS -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        // Open/Close Mobile Overlay Drawer Panel
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        // Close drawer instantly upon user route execution
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+        }
+    </script>
+
+</body>
+<style>
+    /* Completely hides native Astra theme elements */
+    footer.site-footer, 
+    .ast-small-footer,
+    #colophon {
+        display: none !important;
+    }
+</style>
+</html>
