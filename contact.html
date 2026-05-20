@@ -233,7 +233,7 @@
             }
         }
 
-        @media (max-width: 767px) {
+       @media (max-width: 767px) {
     .contact-container {
         padding: 60px 15px;
     }
@@ -247,7 +247,10 @@
         min-height: 600px;
     }
     .reveal-trigger-btn {
-        width: auto;          /* Keeps original padding instead of stretching */
+        width: auto;
+        display: inline-block;
+        padding: 16px 30px; /* Reduced side padding so it fits easily on narrow mobile screens */
+        font-size: 11px;    /* Slightly smaller font to prevent text wrapping layout issues */
         text-align: center;
     }
 }
